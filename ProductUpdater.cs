@@ -4,9 +4,9 @@ public static class ProductUpdater
     {
         Console.Clear();
         Console.WriteLine("Enter the name of the product to update:");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine() ?? string.Empty;
 
-        var product = products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        var product = products.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         if (product != null)
         {
             decimal newPrice;
@@ -19,7 +19,8 @@ public static class ProductUpdater
             product.Price = newPrice;
 
             Console.Write("Is the product available? (yes/no): ");
-            product.IsAvailable = Console.ReadLine().ToLower() == "yes";
+            var input = Console.ReadLine();
+            product.IsAvailable = input != null && input.ToLower() == "yes";
 
             Console.WriteLine("Select new Product Type:");
             foreach (var type in productTypes)
@@ -34,7 +35,7 @@ public static class ProductUpdater
                 Console.Write("Enter the product type ID: ");
                 if (int.TryParse(Console.ReadLine(), out typeId))
                 {
-                    isValidType = productTypes.Exists(t => t.Id == typeId);
+                    isValidType = productTypes.Any(t => t.Id == typeId);
                 }
 
                 if (!isValidType)

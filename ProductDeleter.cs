@@ -4,9 +4,10 @@ public static class ProductDeleter
     {
         Console.Clear();
         Console.WriteLine("Enter the name of the product to delete:");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine() ?? string.Empty;
 
-        var product = products.Find(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        // Using LINQ's FirstOrDefault to find the product by name
+        var product = products.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         if (product != null)
         {
             products.Remove(product);

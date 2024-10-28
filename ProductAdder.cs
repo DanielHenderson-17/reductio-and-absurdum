@@ -4,8 +4,14 @@ public static class ProductAdder
     {
         Console.Clear();
         
-        Console.Write("Enter the product name: ");
-        string name = Console.ReadLine();
+        string name;
+        while (true)
+        {
+            Console.Write("Enter the product name: ");
+            name = Console.ReadLine() ?? string.Empty;
+            if (!string.IsNullOrWhiteSpace(name)) break;
+            Console.WriteLine("Product name cannot be empty. Please enter a valid name.");
+        }
         
         decimal price;
         while (true)
@@ -16,7 +22,7 @@ public static class ProductAdder
         }
 
         Console.Write("Is the product available? (yes/no): ");
-        bool isAvailable = Console.ReadLine().ToLower() == "yes";
+        bool isAvailable = (Console.ReadLine() ?? string.Empty).ToLower() == "yes";
 
         Console.WriteLine("Select Product Type:");
         foreach (var type in productTypes)
@@ -25,24 +31,19 @@ public static class ProductAdder
         }
 
         int typeId = 0;
-        bool isValidType = false;
-        while (!isValidType)
+        while (true)
         {
             Console.Write("Enter the product type ID: ");
-            if (int.TryParse(Console.ReadLine(), out typeId))
+            if (int.TryParse(Console.ReadLine(), out typeId) && productTypes.Any(t => t.Id == typeId))
             {
-                isValidType = productTypes.Exists(t => t.Id == typeId);
+                break;
             }
-            
-            if (!isValidType)
-            {
-                Console.WriteLine("Invalid selection. Please choose a valid product type id.");
-            }
+            Console.WriteLine("Invalid selection. Please choose a valid product type id.");
         }
 
         DateTime dateStocked;
         Console.Write("Enter the stocking date (YYYY-MM-DD) or press Enter to use today’s date: ");
-        string dateInput = Console.ReadLine();
+        string dateInput = Console.ReadLine() ?? string.Empty;
         if (string.IsNullOrWhiteSpace(dateInput) || !DateTime.TryParse(dateInput, out dateStocked))
         {
             dateStocked = DateTime.Now; // Default to today if input is empty or invalid
