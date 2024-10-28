@@ -4,8 +4,8 @@
     {
         List<Product> products = new List<Product>
         {
-            new Product("broom", 15, true, 1),
-            new Product("cauldron", 45, true, 2),
+            new Product("broom", 15, true, 1, new DateTime(2023, 10, 15)),
+            new Product("cauldron", 45, true, 2, new DateTime(2023, 9, 20))
         };
 
         List<ProductType> productTypes = new List<ProductType>

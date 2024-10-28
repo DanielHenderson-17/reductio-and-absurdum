@@ -40,7 +40,15 @@ public static class ProductAdder
             }
         }
 
-        products.Add(new Product(name, price, isAvailable, typeId));
+        DateTime dateStocked;
+        Console.Write("Enter the stocking date (YYYY-MM-DD) or press Enter to use today’s date: ");
+        string dateInput = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(dateInput) || !DateTime.TryParse(dateInput, out dateStocked))
+        {
+            dateStocked = DateTime.Now; // Default to today if input is empty or invalid
+        }
+
+        products.Add(new Product(name, price, isAvailable, typeId, dateStocked));
         Console.WriteLine("Product added successfully. Press any key to return to the main menu...");
         Console.ReadKey();
     }

@@ -12,3 +12,4 @@ C:\Users\Daniel\workspace\nss\ServerSide\csharp\ReductioAndAbsurdum\obj\Debug\ne
 C:\Users\Daniel\workspace\nss\ServerSide\csharp\ReductioAndAbsurdum\obj\Debug\net8.0\ReductioAndAbsurdum.pdb
 C:\Users\Daniel\workspace\nss\ServerSide\csharp\ReductioAndAbsurdum\obj\Debug\net8.0\ReductioAndAbsurdum.genruntimeconfig.cache
 C:\Users\Daniel\workspace\nss\ServerSide\csharp\ReductioAndAbsurdum\obj\Debug\net8.0\ref\ReductioAndAbsurdum.dll
+C:\Users\Daniel\workspace\nss\ServerSide\csharp\ReductioAndAbsurdum\obj\Debug\net8.0\ReductioAndAbsurdum.sourcelink.json
